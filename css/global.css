@@ -21,10 +21,11 @@ img {
 
 #inputResults {
   color: white;
+  margin-left: -15px;
 }
 
 #inputResults .note {
   background: #1985A1;
-  font-size: 30px;
+  font-size: 40px;
   margin-top: 2px;
 }
