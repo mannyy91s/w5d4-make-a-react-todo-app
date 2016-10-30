@@ -12,7 +12,6 @@ inputBtn.addEventListener('click', addToDo)
 
 //array
 var todos = []
-console.log(todos)
 
 //functions
 function enter(event) {
@@ -23,16 +22,33 @@ function enter(event) {
 function addToDo() {
     var inputValue = document.querySelector('#inputNote').value
     if(inputValue !== ''){
-        console.log(inputValue)
         todos.push(inputValue)
+        converTodo()
+        console.log(todos)
         renderView(todos)
         document.querySelector('#inputNote').value = ''
     }
 }
 
+function converTodo() {
+    var str =  JSON.stringify(todos)
+    localStorage.setItem('todos', str)
+}
+
+function getTodo() {
+    var str = localStorage.getItem('todos')
+    todos = JSON.parse(str)
+    if(!todos){
+        todos = []
+    }
+}
+getTodo()
+//react window render
 window.renderView = (data) => {
     ReactDOM.render(
         <Todos data={data} />,
         document.getElementById('inputResults')
     )
 }
+//added this to clear the local storage.
+// localStorage.clear()
